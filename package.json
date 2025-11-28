@@ -16,7 +16,7 @@
             {
                 "label": "One Monokai Python",
                 "uiTheme": "vs-dark",
-                "path": "./themes/OneMonokai-color-theme.json"
+                "path": "./themes/one-monokai-python.json"
             }
         ]
     },

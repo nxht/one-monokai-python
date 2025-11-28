@@ -1,6 +1,5 @@
 .vscode/**
-.vscode-test/**
-vsc-extension-quickstart.md
 .gitignore
-one-monokai-python-old/
 colors.sass
+COMMANDS.md
+screenshot.png
