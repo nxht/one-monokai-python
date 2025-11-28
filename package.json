@@ -1,49 +1,54 @@
 {
-    "name": "one-monokai-python",
-    "displayName": "One Monokai Python",
-    "description": "Python optimized One Monokai theme",
-    "version": "0.4.7",
-    "author": "NoThlnG",
-    "publisher": "NoThlnG",
-    "engines": {
-        "vscode": "^1.55.0"
-    },
-    "categories": [
-        "Themes"
-    ],
-    "icon": "icon.png",
-    "contributes": {
-        "themes": [
-            {
-                "label": "One Monokai Python",
-                "uiTheme": "vs-dark",
-                "path": "./themes/one-monokai-python.json"
-            }
-        ]
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/nxht/one-monokai-python.git"
-    },
-    "bugs": {
-        "url": "https://github.com/nxht/one-monokai-python/issues"
-    },
-    "homepage": "https://github.com/nxht/one-monokai-python/blob/master/README.md",
-    "keywords": [
-        "Vscode",
-        "theme",
-        "onedark",
-        "Monokai",
-        "python"
-    ],
-    "devDependencies": {
-        "@biomejs/biome": "^2.3.8",
-        "@types/bun": "^1.3.3",
-        "@vscode/vsce": "^3.7.1"
-    },
-    "scripts": {
-        "start": "bun run src/index.ts",
-        "prepack": "bun start",
-        "pack": "vsce package"
-    }
+  "name": "one-monokai-python",
+  "displayName": "One Monokai Python",
+  "description": "Python optimized One Monokai theme",
+  "version": "0.4.7",
+  "author": "NoThlnG",
+  "publisher": "NoThlnG",
+  "engines": {
+    "vscode": "^1.55.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "icon": "icon.png",
+  "contributes": {
+    "themes": [
+      {
+        "label": "One Monokai Python",
+        "uiTheme": "vs-dark",
+        "path": "./themes/one-monokai-python.json"
+      },
+      {
+        "label": "One Monokai Python (Flat)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/one-monokai-python-flat.json"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nxht/one-monokai-python.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nxht/one-monokai-python/issues"
+  },
+  "homepage": "https://github.com/nxht/one-monokai-python/blob/master/README.md",
+  "keywords": [
+    "Vscode",
+    "theme",
+    "onedark",
+    "Monokai",
+    "python"
+  ],
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.8",
+    "@types/bun": "^1.3.3",
+    "@vscode/vsce": "^3.7.1"
+  },
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "prepack": "bun start",
+    "pack": "vsce package"
+  }
 }

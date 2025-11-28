@@ -1,10 +1,11 @@
 const COLORS = {
   // Base colors
   black: '#181a1f',
-  darkGray: '#21252b',
-  mediumGray: '#282c34',
-  lightGray: '#2c313a',
-  veryLightGray: '#383e4a',
+  gray1: '#21252b',
+  gray1hover: '#2c313a',
+  gray2: '#282c34',
+  gray4: '#2f333d',
+  gray5: '#383e4a',
 
   // UI colors
   border: '#80808059',
@@ -27,6 +28,7 @@ const COLORS = {
 
   // Editor specific
   comment: '#676f7d',
+  textBase: '#bbbbbb',
   white: '#f8f8f0',
   offWhite: '#abb2bf',
   selectionBlue: '#42557b',
@@ -44,65 +46,67 @@ export function generateTheme({
   name?: string;
   italic?: boolean;
 } = {}) {
+  const italicFontStyle = (italic ?? true) ? 'italic' : undefined;
+
   return {
     name: name ?? 'One Monokai Python',
     type: 'dark',
     semanticHighlighting: true,
     colors: {
-      'activityBar.background': '#2f333d',
+      'activityBar.background': COLORS.gray4,
       'activityBar.foreground': COLORS.text,
       'activityBarBadge.background': COLORS.brightBlue,
       'activityBarBadge.foreground': '#f8fafd',
       'button.background': COLORS.brightBlue,
-      'debugToolBar.background': '#2F333D',
+      'debugToolBar.background': COLORS.gray4,
       'diffEditor.insertedTextBackground': COLORS.greenAlpha,
       'dropdown.background': '#1d1f23',
       'dropdown.border': COLORS.black,
-      'editor.background': COLORS.mediumGray,
+      'editor.background': COLORS.gray2,
       'editor.findMatchBackground': COLORS.selectionBlue,
-      'editor.lineHighlightBackground': COLORS.veryLightGray,
+      'editor.lineHighlightBackground': COLORS.gray5,
       'editor.selectionBackground': '#3e4451',
       'editorCursor.foreground': COLORS.white,
       'editorError.foreground': COLORS.darkRed,
       'editorGroup.border': COLORS.black,
       'editorGroup.emptyBackground': COLORS.black,
-      'editorGroupHeader.tabsBackground': COLORS.darkGray,
-      'editorHoverWidget.background': COLORS.darkGray,
+      'editorGroupHeader.tabsBackground': COLORS.gray1,
+      'editorHoverWidget.background': COLORS.gray1,
       'editorHoverWidget.border': COLORS.black,
       'editorIndentGuide.background1': '#3b4048',
       'editorLineNumber.foreground': '#495162',
       'editorRuler.foreground': '#484848',
-      'editorSuggestWidget.background': COLORS.darkGray,
+      'editorSuggestWidget.background': COLORS.gray1,
       'editorSuggestWidget.border': COLORS.black,
-      'editorSuggestWidget.selectedBackground': COLORS.lightGray,
+      'editorSuggestWidget.selectedBackground': COLORS.gray1hover,
       'editorUnnecessaryCode.opacity': COLORS.blackAlpha,
       'editorWhitespace.foreground': '#484a50',
-      'editorWidget.background': COLORS.darkGray,
+      'editorWidget.background': COLORS.gray1,
       'input.background': '#1d1f23',
-      'list.activeSelectionBackground': COLORS.lightGray,
+      'list.activeSelectionBackground': COLORS.gray1hover,
       'list.activeSelectionForeground': COLORS.text,
-      'list.focusBackground': COLORS.veryLightGray,
+      'list.focusBackground': COLORS.gray5,
       'list.highlightForeground': '#c5c5c5',
       'list.hoverBackground': '#292d35',
-      'list.inactiveSelectionBackground': COLORS.lightGray,
+      'list.inactiveSelectionBackground': COLORS.gray1hover,
       'list.inactiveSelectionForeground': COLORS.text,
-      'notifications.background': COLORS.darkGray,
-      'panel.background': COLORS.darkGray,
+      'notifications.background': COLORS.gray1,
+      'panel.background': COLORS.gray1,
       'scrollbarSlider.activeBackground': '#747d9180',
       'scrollbarSlider.background': '#4e566680',
       'scrollbarSlider.hoverBackground': '#5a637580',
-      'sideBar.background': COLORS.darkGray,
+      'sideBar.background': COLORS.gray1,
       'sideBar.border': COLORS.border,
-      'sideBarSectionHeader.background': COLORS.mediumGray,
-      'statusBar.background': COLORS.darkGray,
+      'sideBarSectionHeader.background': COLORS.gray2,
+      'statusBar.background': COLORS.gray1,
       'statusBar.border': COLORS.border,
-      'statusBar.debuggingBackground': COLORS.darkGray,
+      'statusBar.debuggingBackground': COLORS.gray1,
       'statusBar.foreground': COLORS.secondaryText,
-      'statusBar.noFolderBackground': COLORS.darkGray,
-      'statusBarItem.hoverBackground': COLORS.lightGray,
-      'tab.activeBackground': COLORS.veryLightGray,
+      'statusBar.noFolderBackground': COLORS.gray1,
+      'statusBarItem.hoverBackground': COLORS.gray1hover,
+      'tab.activeBackground': COLORS.gray5,
       'tab.border': COLORS.black,
-      'tab.inactiveBackground': COLORS.darkGray,
+      'tab.inactiveBackground': COLORS.gray1,
       'terminal.ansiBlack': '#2d3139',
       'terminal.ansiBlue': COLORS.brightBlue,
       'terminal.ansiBrightBlack': '#7f848e',
@@ -120,9 +124,9 @@ export function generateTheme({
       'terminal.ansiWhite': COLORS.text,
       'terminal.ansiYellow': COLORS.yellow,
       'terminal.foreground': COLORS.offWhite,
-      'titleBar.activeBackground': COLORS.mediumGray,
+      'titleBar.activeBackground': COLORS.gray2,
       'titleBar.activeForeground': COLORS.secondaryText,
-      'titleBar.inactiveBackground': COLORS.mediumGray,
+      'titleBar.inactiveBackground': COLORS.gray2,
       'titleBar.inactiveForeground': COLORS.mutedText,
     },
     tokenColors: [
@@ -261,8 +265,8 @@ export function generateTheme({
           'parameter.variable',
         ],
         settings: {
-          foreground: '#D19A66',
-          fontStyle: 'italic',
+          foreground: '#d19a66',
+          fontStyle: italicFontStyle,
         },
       },
       {
@@ -431,7 +435,7 @@ export function generateTheme({
       {
         scope: ['meta.diff', 'meta.diff.header'],
         settings: {
-          foreground: '#75715E',
+          foreground: '#75715e',
         },
       },
       {
@@ -527,7 +531,7 @@ export function generateTheme({
       {
         scope: 'punctuation.definition.list_item.markdown',
         settings: {
-          foreground: '#FFFFFF',
+          foreground: COLORS.textBase,
           fontStyle: 'bold',
         },
       },
@@ -568,13 +572,13 @@ export function generateTheme({
       {
         scope: 'token.info-token',
         settings: {
-          foreground: '#6796E6',
+          foreground: '#6796e6',
         },
       },
       {
         scope: 'token.warn-token',
         settings: {
-          foreground: '#CD9731',
+          foreground: '#cd9731',
         },
       },
       {
@@ -586,22 +590,22 @@ export function generateTheme({
       {
         scope: 'token.debug-token',
         settings: {
-          foreground: '#B267E6',
+          foreground: '#b267e6',
         },
       },
       {
         scope: 'variable.language.this',
         settings: {
           foreground: COLORS.purple,
-          fontStyle: 'italic',
+          fontStyle: italicFontStyle,
         },
       },
     ],
     semanticTokenColors: {
-      'variable:javascript': COLORS.text,
-      'variable:typescript': COLORS.text,
-      module: COLORS.text,
+      variable: COLORS.textBase,
+      module: COLORS.textBase,
       method: COLORS.green,
+      // `function` includes decorator
       'function.declaration': COLORS.green,
       selfParameter: COLORS.purple,
       magicFunction: {
@@ -609,8 +613,7 @@ export function generateTheme({
         italic: italic ?? true,
       },
       '*.decorator': COLORS.cyan,
-      'method.decorator': COLORS.text,
-      // "variable.local.readonly": COLORS.blue,
+      'method.decorator': COLORS.textBase,
     },
   };
 }
