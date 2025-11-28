@@ -35,5 +35,8 @@
         "Monokai",
         "python"
     ],
-    "author": "NoThlnG"
+    "author": "NoThlnG",
+    "devDependencies": {
+        "@types/bun": "^1.3.3"
+    }
 }
