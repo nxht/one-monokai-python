@@ -1,6 +1,14 @@
+# npm
 node_modules
-one-monokai-python-old
-*.vsix
-.vscode/settings.json
-test/
 pnpm-lock.yaml
+
+# settings
+.vscode/settings.json
+
+# package
+*.vsix
+
+# testing
+test/
+
+COMMANDS.md
