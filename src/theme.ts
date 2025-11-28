@@ -1,102 +1,147 @@
-export function generateTheme({ name }: { name?: string } = {}) {
+const COLORS = {
+  // Base colors
+  black: '#181a1f',
+  darkGray: '#21252b',
+  mediumGray: '#282c34',
+  lightGray: '#2c313a',
+  veryLightGray: '#383e4a',
+
+  // UI colors
+  border: '#80808059',
+  text: '#d7dae0',
+  secondaryText: '#9da5b4',
+  mutedText: '#6b717d',
+
+  // Syntax colors
+  red: '#e06c75',
+  brightRed: '#f44747',
+  darkRed: '#c24038',
+  green: '#98c379',
+  yellow: '#e5c07b',
+  blue: '#61afef',
+  brightBlue: '#528bff',
+  magenta: '#c678dd',
+  brightMagenta: '#7e0097',
+  purple: '#ab63f2',
+  cyan: '#56b6c2',
+
+  // Editor specific
+  comment: '#676f7d',
+  white: '#f8f8f0',
+  offWhite: '#abb2bf',
+  selectionBlue: '#42557b',
+
+  // Alphas
+  blackAlpha: '#000000c0',
+  cyanAlpha: '#56b6c2a0',
+  greenAlpha: '#00809b33',
+} as const;
+
+export function generateTheme({
+  name,
+  italic,
+}: {
+  name?: string;
+  italic?: boolean;
+} = {}) {
   return {
     name: name ?? 'One Monokai Python',
     type: 'dark',
     semanticHighlighting: true,
     colors: {
       'activityBar.background': '#2f333d',
-      'activityBar.foreground': '#d7dae0',
-      'activityBarBadge.background': '#528bff',
+      'activityBar.foreground': COLORS.text,
+      'activityBarBadge.background': COLORS.brightBlue,
       'activityBarBadge.foreground': '#f8fafd',
-      'button.background': '#528bff',
+      'button.background': COLORS.brightBlue,
       'debugToolBar.background': '#2F333D',
-      'diffEditor.insertedTextBackground': '#00809B33',
+      'diffEditor.insertedTextBackground': COLORS.greenAlpha,
       'dropdown.background': '#1d1f23',
-      'dropdown.border': '#181a1f',
-      'editor.background': '#282c34',
-      'editor.findMatchBackground': '#42557b',
-      'editor.lineHighlightBackground': '#383e4a',
+      'dropdown.border': COLORS.black,
+      'editor.background': COLORS.mediumGray,
+      'editor.findMatchBackground': COLORS.selectionBlue,
+      'editor.lineHighlightBackground': COLORS.veryLightGray,
       'editor.selectionBackground': '#3e4451',
-      'editorCursor.foreground': '#f8f8f0',
-      'editorError.foreground': '#c24038',
-      'editorGroup.border': '#181a1f',
-      'editorGroup.emptyBackground': '#181a1f',
-      'editorGroupHeader.tabsBackground': '#21252b',
-      'editorHoverWidget.background': '#21252b',
-      'editorHoverWidget.border': '#181a1f',
+      'editorCursor.foreground': COLORS.white,
+      'editorError.foreground': COLORS.darkRed,
+      'editorGroup.border': COLORS.black,
+      'editorGroup.emptyBackground': COLORS.black,
+      'editorGroupHeader.tabsBackground': COLORS.darkGray,
+      'editorHoverWidget.background': COLORS.darkGray,
+      'editorHoverWidget.border': COLORS.black,
       'editorIndentGuide.background1': '#3b4048',
       'editorLineNumber.foreground': '#495162',
       'editorRuler.foreground': '#484848',
-      'editorSuggestWidget.background': '#21252b',
-      'editorSuggestWidget.border': '#181a1f',
-      'editorSuggestWidget.selectedBackground': '#2c313a',
-      'editorUnnecessaryCode.opacity': '#000000c0',
+      'editorSuggestWidget.background': COLORS.darkGray,
+      'editorSuggestWidget.border': COLORS.black,
+      'editorSuggestWidget.selectedBackground': COLORS.lightGray,
+      'editorUnnecessaryCode.opacity': COLORS.blackAlpha,
       'editorWhitespace.foreground': '#484a50',
-      'editorWidget.background': '#21252b',
+      'editorWidget.background': COLORS.darkGray,
       'input.background': '#1d1f23',
-      'list.activeSelectionBackground': '#2c313a',
-      'list.activeSelectionForeground': '#d7dae0',
-      'list.focusBackground': '#383e4a',
+      'list.activeSelectionBackground': COLORS.lightGray,
+      'list.activeSelectionForeground': COLORS.text,
+      'list.focusBackground': COLORS.veryLightGray,
       'list.highlightForeground': '#c5c5c5',
       'list.hoverBackground': '#292d35',
-      'list.inactiveSelectionBackground': '#2c313a',
-      'list.inactiveSelectionForeground': '#d7dae0',
-      'notifications.background': '#21252b',
-      'panel.background': '#21252b',
+      'list.inactiveSelectionBackground': COLORS.lightGray,
+      'list.inactiveSelectionForeground': COLORS.text,
+      'notifications.background': COLORS.darkGray,
+      'panel.background': COLORS.darkGray,
       'scrollbarSlider.activeBackground': '#747d9180',
       'scrollbarSlider.background': '#4e566680',
       'scrollbarSlider.hoverBackground': '#5a637580',
-      'sideBar.background': '#21252b',
-      'sideBar.border': '#80808059',
-      'sideBarSectionHeader.background': '#282c34',
-      'statusBar.background': '#21252b',
-      'statusBar.border': '#80808059',
-      'statusBar.debuggingBackground': '#21252b',
-      'statusBar.foreground': '#9da5b4',
-      'statusBar.noFolderBackground': '#21252b',
-      'statusBarItem.hoverBackground': '#2c313a',
-      'tab.activeBackground': '#383e4a',
-      'tab.border': '#181a1f',
-      'tab.inactiveBackground': '#21252b',
+      'sideBar.background': COLORS.darkGray,
+      'sideBar.border': COLORS.border,
+      'sideBarSectionHeader.background': COLORS.mediumGray,
+      'statusBar.background': COLORS.darkGray,
+      'statusBar.border': COLORS.border,
+      'statusBar.debuggingBackground': COLORS.darkGray,
+      'statusBar.foreground': COLORS.secondaryText,
+      'statusBar.noFolderBackground': COLORS.darkGray,
+      'statusBarItem.hoverBackground': COLORS.lightGray,
+      'tab.activeBackground': COLORS.veryLightGray,
+      'tab.border': COLORS.black,
+      'tab.inactiveBackground': COLORS.darkGray,
       'terminal.ansiBlack': '#2d3139',
-      'terminal.ansiBlue': '#528bff',
+      'terminal.ansiBlue': COLORS.brightBlue,
       'terminal.ansiBrightBlack': '#7f848e',
-      'terminal.ansiBrightBlue': '#528bff',
-      'terminal.ansiBrightCyan': '#56b6c2',
-      'terminal.ansiBrightGreen': '#98c379',
-      'terminal.ansiBrightMagenta': '#7e0097',
-      'terminal.ansiBrightRed': '#f44747',
-      'terminal.ansiBrightWhite': '#d7dae0',
-      'terminal.ansiBrightYellow': '#e5c07b',
-      'terminal.ansiCyan': '#56b6c2',
-      'terminal.ansiGreen': '#98c379',
-      'terminal.ansiMagenta': '#c678dd',
-      'terminal.ansiRed': '#e06c75',
-      'terminal.ansiWhite': '#d7dae0',
-      'terminal.ansiYellow': '#e5c07b',
-      'terminal.foreground': '#abb2bf',
-      'titleBar.activeBackground': '#282c34',
-      'titleBar.activeForeground': '#9da5b4',
-      'titleBar.inactiveBackground': '#282c34',
-      'titleBar.inactiveForeground': '#6b717d',
+      'terminal.ansiBrightBlue': COLORS.brightBlue,
+      'terminal.ansiBrightCyan': COLORS.cyan,
+      'terminal.ansiBrightGreen': COLORS.green,
+      'terminal.ansiBrightMagenta': COLORS.brightMagenta,
+      'terminal.ansiBrightRed': COLORS.brightRed,
+      'terminal.ansiBrightWhite': COLORS.text,
+      'terminal.ansiBrightYellow': COLORS.yellow,
+      'terminal.ansiCyan': COLORS.cyan,
+      'terminal.ansiGreen': COLORS.green,
+      'terminal.ansiMagenta': COLORS.magenta,
+      'terminal.ansiRed': COLORS.red,
+      'terminal.ansiWhite': COLORS.text,
+      'terminal.ansiYellow': COLORS.yellow,
+      'terminal.foreground': COLORS.offWhite,
+      'titleBar.activeBackground': COLORS.mediumGray,
+      'titleBar.activeForeground': COLORS.secondaryText,
+      'titleBar.inactiveBackground': COLORS.mediumGray,
+      'titleBar.inactiveForeground': COLORS.mutedText,
     },
     tokenColors: [
       {
         scope: ['comment', 'string.comment'],
         settings: {
-          foreground: '#676F7D',
+          foreground: COLORS.comment,
         },
       },
       {
         scope: ['string', 'string.template'],
         settings: {
-          foreground: '#E5C07B',
+          foreground: COLORS.yellow,
         },
       },
       {
         scope: 'constant.numeric',
         settings: {
-          foreground: '#C678DD',
+          foreground: COLORS.magenta,
         },
       },
       {
@@ -107,7 +152,7 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'punctuation.section.embedded',
         ],
         settings: {
-          foreground: '#C678DD',
+          foreground: COLORS.magenta,
         },
       },
       {
@@ -122,25 +167,25 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'meta.brace',
         ],
         settings: {
-          foreground: '#ABB2BF',
+          foreground: COLORS.offWhite,
         },
       },
       {
         scope: 'constant.language',
         settings: {
-          foreground: '#56B6C2',
+          foreground: COLORS.cyan,
         },
       },
       {
         scope: ['constant.character', 'constant.other'],
         settings: {
-          foreground: '#56B6C2',
+          foreground: COLORS.cyan,
         },
       },
       {
         scope: 'variable.language',
         settings: {
-          foreground: '#E06C75',
+          foreground: COLORS.red,
         },
       },
       {
@@ -150,19 +195,19 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'keyword.operator.constructor',
         ],
         settings: {
-          foreground: '#E06C75',
+          foreground: COLORS.red,
         },
       },
       {
         scope: 'keyword.operator',
         settings: {
-          foreground: '#E06C75',
+          foreground: COLORS.red,
         },
       },
       {
         scope: 'storage',
         settings: {
-          foreground: '#E06C75',
+          foreground: COLORS.red,
         },
       },
       {
@@ -176,7 +221,7 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'entity.name.function.target.makefile',
         ],
         settings: {
-          foreground: '#61AFEF',
+          foreground: COLORS.blue,
         },
       },
       {
@@ -191,7 +236,7 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'variable.readwrite.other.block',
         ],
         settings: {
-          foreground: '#61AFEF',
+          foreground: COLORS.blue,
         },
       },
       {
@@ -200,13 +245,13 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'text.tex.latex support.function',
         ],
         settings: {
-          foreground: '#98C379',
+          foreground: COLORS.green,
         },
       },
       {
         scope: ['storage.modifier.import', 'storage.modifier.package'],
         settings: {
-          foreground: '#61AFEF',
+          foreground: COLORS.blue,
         },
       },
       {
@@ -223,7 +268,7 @@ export function generateTheme({ name }: { name?: string } = {}) {
       {
         scope: 'entity.name.function-call',
         settings: {
-          foreground: '#ABB2BF',
+          foreground: COLORS.offWhite,
         },
       },
       {
@@ -233,31 +278,31 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'support.function.command',
         ],
         settings: {
-          foreground: '#98C379',
+          foreground: COLORS.green,
         },
       },
       {
         scope: ['entity.name.tag', 'entity.name.tag.class.js'],
         settings: {
-          foreground: '#E06C75',
+          foreground: COLORS.red,
         },
       },
       {
         scope: ['entity.name.tag.class', 'entity.name.tag.id'],
         settings: {
-          foreground: '#56B6C2',
+          foreground: COLORS.cyan,
         },
       },
       {
         scope: 'entity.other.attribute-name',
         settings: {
-          foreground: '#98C379',
+          foreground: COLORS.green,
         },
       },
       {
         scope: 'support.constant',
         settings: {
-          foreground: '#56B6C2',
+          foreground: COLORS.cyan,
         },
       },
       {
@@ -268,13 +313,13 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'variable.other.normal.shell',
         ],
         settings: {
-          foreground: '#61AFEF',
+          foreground: COLORS.blue,
         },
       },
       {
         scope: 'support.dictionary.json',
         settings: {
-          foreground: '#56B6C2',
+          foreground: COLORS.cyan,
         },
       },
       {
@@ -285,7 +330,7 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'support.type.property-name.sass',
         ],
         settings: {
-          foreground: '#ABB2BF',
+          foreground: COLORS.offWhite,
         },
       },
       {
@@ -300,7 +345,7 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'entity.other.attribute-name.pseudo-element.sass',
         ],
         settings: {
-          foreground: '#56B6C2',
+          foreground: COLORS.cyan,
         },
       },
       {
@@ -311,7 +356,7 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'support.constant.sass',
         ],
         settings: {
-          foreground: '#98C379',
+          foreground: COLORS.green,
         },
       },
       {
@@ -322,7 +367,7 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'variable.sass',
         ],
         settings: {
-          foreground: '#56B6C2',
+          foreground: COLORS.cyan,
         },
       },
       {
@@ -333,13 +378,13 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'variable.sass.string',
         ],
         settings: {
-          foreground: '#E5C07B',
+          foreground: COLORS.yellow,
         },
       },
       {
         scope: ['unit.css', 'unit.scss', 'unit.less', 'unit.sass'],
         settings: {
-          foreground: '#C678DD',
+          foreground: COLORS.magenta,
         },
       },
       {
@@ -350,7 +395,7 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'function.sass',
         ],
         settings: {
-          foreground: '#56B6C2',
+          foreground: COLORS.cyan,
         },
       },
       {
@@ -362,25 +407,25 @@ export function generateTheme({ name }: { name?: string } = {}) {
       {
         scope: 'invalid',
         settings: {
-          foreground: '#F8F8F0',
+          foreground: COLORS.white,
         },
       },
       {
         scope: 'invalid.deprecated',
         settings: {
-          foreground: '#F8F8F0',
+          foreground: COLORS.white,
         },
       },
       {
         scope: 'support.type.property-name.json',
         settings: {
-          foreground: '#56B6C2',
+          foreground: COLORS.cyan,
         },
       },
       {
         scope: 'string.detected-link',
         settings: {
-          foreground: '#61AFEF',
+          foreground: COLORS.blue,
         },
       },
       {
@@ -392,31 +437,31 @@ export function generateTheme({ name }: { name?: string } = {}) {
       {
         scope: 'markup.deleted',
         settings: {
-          foreground: '#E06C75',
+          foreground: COLORS.red,
         },
       },
       {
         scope: 'markup.inserted',
         settings: {
-          foreground: '#98C379',
+          foreground: COLORS.green,
         },
       },
       {
         scope: 'markup.changed',
         settings: {
-          foreground: '#E5C07B',
+          foreground: COLORS.yellow,
         },
       },
       {
         scope: 'constant.numeric.line-number.find-in-files - match',
         settings: {
-          foreground: '#56B6C2A0',
+          foreground: COLORS.cyanAlpha,
         },
       },
       {
         scope: 'entity.name.filename.find-in-files',
         settings: {
-          foreground: '#E5C07B',
+          foreground: COLORS.yellow,
         },
       },
       {
@@ -432,7 +477,7 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'punctuation.definition.heading.markdown',
         ],
         settings: {
-          foreground: '#676F7D',
+          foreground: COLORS.comment,
         },
       },
       {
@@ -444,7 +489,7 @@ export function generateTheme({ name }: { name?: string } = {}) {
       {
         scope: 'markup.underline.link.markdown',
         settings: {
-          foreground: '#61AFEF',
+          foreground: COLORS.blue,
         },
       },
       {
@@ -456,27 +501,27 @@ export function generateTheme({ name }: { name?: string } = {}) {
       {
         scope: 'markup.heading.markdown',
         settings: {
-          foreground: '#E06C75',
+          foreground: COLORS.red,
           fontStyle: 'bold',
         },
       },
       {
         scope: 'markup.quote.markdown',
         settings: {
-          foreground: '#98C379',
+          foreground: COLORS.green,
         },
       },
       {
         scope: 'meta.separator.markdown',
         settings: {
-          foreground: '#C678DD',
+          foreground: COLORS.magenta,
           fontStyle: 'bold',
         },
       },
       {
         scope: ['markup.inline.raw', 'markup.raw.block.markdown'],
         settings: {
-          foreground: '#56B6C2',
+          foreground: COLORS.cyan,
         },
       },
       {
@@ -494,7 +539,7 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'meta.decorator entity.name.function',
         ],
         settings: {
-          foreground: '#56B6C2',
+          foreground: COLORS.cyan,
         },
       },
       {
@@ -505,19 +550,19 @@ export function generateTheme({ name }: { name?: string } = {}) {
           'entity.name.section.group-title.ini',
         ],
         settings: {
-          foreground: '#E06C75',
+          foreground: COLORS.red,
         },
       },
       {
         scope: ['variable.other.env', 'keyword.other.definition.ini'],
         settings: {
-          foreground: '#61AFEF',
+          foreground: COLORS.blue,
         },
       },
       {
         scope: ['meta.function-call'],
         settings: {
-          foreground: '#98C379',
+          foreground: COLORS.green,
         },
       },
       {
@@ -535,7 +580,7 @@ export function generateTheme({ name }: { name?: string } = {}) {
       {
         scope: 'token.error-token',
         settings: {
-          foreground: '#F44747',
+          foreground: COLORS.brightRed,
         },
       },
       {
@@ -547,25 +592,25 @@ export function generateTheme({ name }: { name?: string } = {}) {
       {
         scope: 'variable.language.this',
         settings: {
-          foreground: '#ab63f2',
+          foreground: COLORS.purple,
           fontStyle: 'italic',
         },
       },
     ],
     semanticTokenColors: {
-      'variable:javascript': '#BBBBBB',
-      'variable:typescript': '#BBBBBB',
-      module: '#BBBBBB',
-      method: '#98C379',
-      'function.declaration': '#98C379',
-      selfParameter: '#ab63f2',
+      'variable:javascript': COLORS.text,
+      'variable:typescript': COLORS.text,
+      module: COLORS.text,
+      method: COLORS.green,
+      'function.declaration': COLORS.green,
+      selfParameter: COLORS.purple,
       magicFunction: {
-        foreground: '#98C379',
-        italic: true,
+        foreground: COLORS.green,
+        italic: italic ?? true,
       },
-      '*.decorator': '#56B6C2',
-      'method.decorator': '#BBBBBB',
-      // "variable.local.readonly": "#61AFEF",
+      '*.decorator': COLORS.cyan,
+      'method.decorator': COLORS.text,
+      // "variable.local.readonly": COLORS.blue,
     },
   };
 }
