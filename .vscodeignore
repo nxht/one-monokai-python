@@ -1,5 +1,11 @@
 .vscode/**
+node_modules/**
+sample/**
+src/**
 .gitignore
+bun.lock
+tsconfig.json
+biome.jsonc
 colors.sass
 COMMANDS.md
 screenshot.png
