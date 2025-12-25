@@ -1,0 +1,313 @@
+\documentclass[12pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+
+% Geometry settings
+\geometry{margin=1in}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+
+% Custom commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+% Code listing settings
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny,
+    breaklines=true,
+    frame=single
+}
+
+% Title information
+\title{One Monokai Python Theme: \\ LaTeX Sample Document}
+\author{Theme Testing}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a sample \LaTeX{} document to test the \textbf{One Monokai Python} theme's syntax highlighting for \LaTeX{} files. It includes various mathematical expressions, theorems, code listings, and common \LaTeX{} constructs.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+
+\LaTeX{} is a high-quality typesetting system that includes features designed for the production of technical and scientific documentation. This document demonstrates various \LaTeX{} features.
+
+\subsection{Basic Text Formatting}
+
+Here we have \textit{italic text}, \textbf{bold text}, \texttt{monospaced text}, and \underline{underlined text}. We can also use \emph{emphasized text} which adapts to context.
+
+\section{Mathematical Expressions}
+
+\subsection{Inline Mathematics}
+
+The quadratic formula is given by $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$. Euler's identity states that $e^{i\pi} + 1 = 0$.
+
+\subsection{Display Mathematics}
+
+The integral of a function $f(x)$ from $a$ to $b$ is denoted as:
+\[
+\int_a^b f(x) \, dx
+\]
+
+The sum of the first $n$ natural numbers:
+\begin{equation}
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+\label{eq:sum}
+\end{equation}
+
+\subsection{Matrix Notation}
+
+A $2 \times 2$ matrix can be written as:
+\[
+A = \begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+\]
+
+The identity matrix:
+\begin{equation}
+I_n = \begin{bmatrix}
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & 1
+\end{bmatrix}
+\end{equation}
+
+\subsection{Aligned Equations}
+
+\begin{align}
+f(x) &= x^2 + 2x + 1 \\
+     &= (x + 1)^2 \\
+     &= (x + 1)(x + 1)
+\end{align}
+
+\subsection{Cases and Piecewise Functions}
+
+\begin{equation}
+f(x) = \begin{cases}
+x^2 & \text{if } x \geq 0 \\
+-x^2 & \text{if } x < 0
+\end{cases}
+\end{equation}
+
+\section{Theorems and Proofs}
+
+\begin{theorem}[Pythagorean Theorem]
+\label{thm:pythagoras}
+In a right triangle, the square of the hypotenuse is equal to the sum of squares of the other two sides:
+\[
+a^2 + b^2 = c^2
+\]
+\end{theorem}
+
+\begin{proof}
+The proof follows from the geometric interpretation... (proof omitted for brevity).
+\end{proof}
+
+\begin{lemma}
+\label{lem:example}
+For all $n \in \N$, we have $n^2 \geq n$.
+\end{lemma}
+
+\begin{definition}[Continuous Function]
+A function $f: \R \to \R$ is continuous at $x_0$ if for every $\epsilon > 0$, there exists $\delta > 0$ such that:
+\[
+|x - x_0| < \delta \implies |f(x) - f(x_0)| < \epsilon
+\]
+\end{definition}
+
+\begin{example}
+Consider the function $f(x) = x^2$. This function is continuous everywhere on $\R$.
+\end{example}
+
+\section{Lists}
+
+\subsection{Itemized List}
+
+\begin{itemize}
+    \item First item
+    \item Second item
+    \begin{itemize}
+        \item Nested item A
+        \item Nested item B
+    \end{itemize}
+    \item Third item
+\end{itemize}
+
+\subsection{Enumerated List}
+
+\begin{enumerate}
+    \item First step
+    \item Second step
+    \item Third step
+    \begin{enumerate}
+        \item Sub-step 3.1
+        \item Sub-step 3.2
+    \end{enumerate}
+    \item Fourth step
+\end{enumerate}
+
+\section{Tables and Figures}
+
+\subsection{Tables}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Name} & \textbf{Value} & \textbf{Unit} \\
+\hline
+Speed of light & $3 \times 10^8$ & m/s \\
+Planck constant & $6.626 \times 10^{-34}$ & J·s \\
+Avogadro constant & $6.022 \times 10^{23}$ & mol$^{-1}$ \\
+\hline
+\end{tabular}
+\caption{Physical constants}
+\label{tab:constants}
+\end{table}
+
+\subsection{Figures}
+
+\begin{figure}[h]
+\centering
+% \includegraphics[width=0.5\textwidth]{example-image}
+\caption{Example figure (image not included)}
+\label{fig:example}
+\end{figure}
+
+\section{Code Listings}
+
+Here's an example of embedded Python code:
+
+\begin{lstlisting}[caption={Python Fibonacci Implementation}]
+def fibonacci(n):
+    """Calculate Fibonacci sequence."""
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    
+    return fib
+
+# Test the function
+result = fibonacci(10)
+print(f"Fibonacci sequence: {result}")
+\end{lstlisting}
+
+\section{Cross-References}
+
+We can reference Equation~\ref{eq:sum} from Section~\ref{sec:math}. Theorem~\ref{thm:pythagoras} is a fundamental result in geometry. See Table~\ref{tab:constants} for physical constants.
+
+\section{Special Symbols and Greek Letters}
+
+Greek letters: $\alpha, \beta, \gamma, \delta, \epsilon, \zeta, \eta, \theta, \lambda, \mu, \pi, \rho, \sigma, \tau, \phi, \chi, \psi, \omega$
+
+Capital Greek letters: $\Gamma, \Delta, \Theta, \Lambda, \Xi, \Pi, \Sigma, \Phi, \Psi, \Omega$
+
+Mathematical operators: $\pm, \times, \div, \cdot, \leq, \geq, \neq, \approx, \equiv, \subset, \subseteq, \in, \notin, \cup, \cap, \emptyset$
+
+Calculus: $\partial, \nabla, \infty, \lim, \int, \oint, \sum, \prod$
+
+\section{Advanced Mathematics}
+
+\subsection{Limits}
+
+\[
+\lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n = e
+\]
+
+\subsection{Derivatives}
+
+\[
+\frac{d}{dx} \left( \sin(x) \right) = \cos(x)
+\]
+
+\subsection{Integrals}
+
+\[
+\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}
+\]
+
+\subsection{Partial Derivatives}
+
+\[
+\frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u
+\]
+
+\section{Conclusion}
+
+This document demonstrates various \LaTeX{} features for testing the One Monokai Python theme. The theme should properly highlight commands, environments, math mode, comments, and other \LaTeX{} constructs.
+
+\begin{thebibliography}{99}
+
+\bibitem{lamport1994}
+Lamport, L. (1994).
+\textit{\LaTeX: A Document Preparation System}.
+Addison-Wesley Professional.
+
+\bibitem{knuth1986}
+Knuth, D. E. (1986).
+\textit{The \TeX book}.
+Addison-Wesley Professional.
+
+\end{thebibliography}
+
+\appendix
+
+\section{Appendix: Additional Formulas}
+
+\subsection{Taylor Series}
+
+\[
+f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \cdots
+\]
+
+\subsection{Fourier Transform}
+
+\[
+\hat{f}(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} \, dt
+\]
+
+\end{document}
