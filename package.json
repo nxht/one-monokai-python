@@ -49,6 +49,8 @@
   "scripts": {
     "start": "bun run src/index.ts",
     "prepack": "bun start",
-    "pack": "vsce package"
+    "pack": "vsce package",
+    "prepublish": "bun pack",
+    "publish": "vsce publish"
   }
 }
