@@ -3,7 +3,9 @@ import { generateTheme } from './theme.ts';
 
 const base_dir = './themes';
 
-if (!fs.exists(base_dir)) {
+try {
+  await fs.access(base_dir);
+} catch (_err) {
   await fs.mkdir(base_dir);
 }
 
