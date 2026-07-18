@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.5.0
+
+- Refactor to use code-based theme generation
+- Added `flat` theme
+
 ## 0.4.7
 
 - Cherry pick https://github.com/azemoh/vscode-one-monokai/pull/46
