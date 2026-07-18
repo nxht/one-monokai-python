@@ -311,7 +311,7 @@ export function generateTheme({
       },
       {
         scope: [
-          'support.type',
+          // 'support.type',
           'support.variable',
           'variable.other.normal.fish',
           'variable.other.normal.shell',
@@ -541,6 +541,7 @@ export function generateTheme({
           'entity.name.function.decorator',
           'meta.decorator',
           'meta.decorator entity.name.function',
+          'meta.function.decorator',
         ],
         settings: {
           foreground: COLORS.cyan,
@@ -600,6 +601,16 @@ export function generateTheme({
           fontStyle: italicFontStyle,
         },
       },
+      {
+        scope: [
+          'variable.parameter.function.language.special.self',
+          'variable.parameter.function.language.special.cls',
+        ],
+        settings: {
+          foreground: COLORS.purple,
+          fontStyle: italicFontStyle,
+        },
+      },
     ],
     semanticTokenColors: {
       variable: COLORS.textBase,
@@ -608,6 +619,7 @@ export function generateTheme({
       // `function` includes decorator
       'function.declaration': COLORS.green,
       selfParameter: COLORS.purple,
+      'parameter.selfParameter': COLORS.purple,
       magicFunction: {
         foreground: COLORS.green,
         italic: italic ?? true,

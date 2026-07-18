@@ -5,7 +5,8 @@ Python optimized theme based on [One Monokai](https://marketplace.visualstudio.c
 ## Difference with original One Monokai
 
 - semanticHighlighting support
-- Custom color for `self`
+  - Depends on the LSP (like `pyrefly`), it might be better to be turned off via `editor.semanticHighlighting.enabled` settings
+- Custom color for `self`, `cls`
 - Changed `class`, `def` color to red
 - Fix strange color for decorator
 - Italic for magic functions

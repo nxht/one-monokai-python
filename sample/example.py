@@ -4,38 +4,38 @@ Sample Python file to test One Monokai Python theme syntax highlighting.
 
 import os
 import sys
-from typing import List, Dict, Optional
 from datetime import datetime
+from typing import Dict, List, Optional
 
 
 class DataProcessor:
     """A sample class for processing data."""
-    
+
     def __init__(self, name: str, config: Optional[Dict] = None):
         self.name = name
         self.config = config or {}
         self._data: List[int] = []
-    
+
     def add_data(self, values: List[int]) -> None:
         """Add values to the internal data list."""
         self._data.extend(values)
         print(f"Added {len(values)} values to {self.name}")
-    
+
     def process(self) -> Dict[str, float]:
         """Process the data and return statistics."""
         if not self._data:
             return {"mean": 0.0, "sum": 0.0, "count": 0}
-        
+
         total = sum(self._data)
         count = len(self._data)
         mean = total / count
-        
+
         return {
             "mean": mean,
             "sum": float(total),
             "count": count,
             "max": float(max(self._data)),
-            "min": float(min(self._data))
+            "min": float(min(self._data)),
         }
 
 
@@ -45,16 +45,16 @@ def calculate_fibonacci(n: int) -> List[int]:
         return []
     elif n == 1:
         return [0]
-    
+
     fib = [0, 1]
     for i in range(2, n):
-        fib.append(fib[i-1] + fib[i-2])
-    
+        fib.append(fib[i - 1] + fib[i - 2])
+
     return fib
 
 
 # Lambda function example
-square = lambda x: x ** 2
+square = lambda x: x**2
 
 # List comprehension
 numbers = [i for i in range(1, 11) if i % 2 == 0]
@@ -69,24 +69,42 @@ message = f"Welcome to {name} {version}!"
 
 # Regular expression
 import re
-pattern = r'\d{3}-\d{3}-\d{4}'
+
+pattern = r"\d{3}-\d{3}-\d{4}"
 phone = "123-456-7890"
 match = re.match(pattern, phone)
 
 # Context manager
-with open('example.txt', 'w') as f:
+with open("example.txt", "w") as f:
     f.write("Hello, World!\n")
+
 
 # Decorator example
 def timer_decorator(func):
     """A decorator to time function execution."""
+
     def wrapper(*args, **kwargs):
         start = datetime.now()
         result = func(*args, **kwargs)
         end = datetime.now()
         print(f"{func.__name__} took {end - start}")
         return result
+
     return wrapper
+
+
+class Audit:
+    """Simple classmethod-based decorator example."""
+
+    prefix = "AUDIT"
+
+    @classmethod
+    def log_call(cls, func):
+        def wrapper(*args, **kwargs):
+            print(f"[{cls.prefix}] calling {func.__name__}")
+            return func(*args, **kwargs)
+
+        return wrapper
 
 
 @timer_decorator
@@ -98,32 +116,50 @@ def slow_function(n: int) -> int:
     return total
 
 
+audit = Audit()
+
+
+@audit.log_call()
+def greet(user: str) -> str:
+    """Function decorated by a classmethod decorator."""
+    return f"Hello, {user}!"
+
+
+@Audit.log_call()
+def greet2(user: str) -> str:
+    """Function decorated by a classmethod decorator."""
+    return f"Hello, {user}!"
+
+
 if __name__ == "__main__":
     # Create processor instance
     processor = DataProcessor("Test Processor")
-    
+
     # Add some data
     processor.add_data([10, 20, 30, 40, 50])
-    
+
     # Process and display results
     stats = processor.process()
     print(f"Statistics: {stats}")
-    
+
     # Calculate Fibonacci
     fib_numbers = calculate_fibonacci(10)
     print(f"Fibonacci sequence: {fib_numbers}")
-    
+
     # Test decorator
     result = slow_function(1000000)
     print(f"Result: {result}")
-    
+
+    # Test classmethod-based decorator
+    print(greet("Alice"))
+
     # Multi-line string
     multiline = """
     This is a multi-line string
     with multiple lines of text
     and proper indentation.
     """
-    
+
     # Try-except block
     try:
         risky_operation = 10 / 0
